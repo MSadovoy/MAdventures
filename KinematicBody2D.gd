@@ -30,7 +30,7 @@ func _physics_process(delta):
 	set_animation()
 	
 func check_key_input():
-	if Input.is_key_pressed(KEY_D):
+	if Input.is_key_pressed(KEY_B):
 		movement.x = speed * 1
 	elif Input.is_key_pressed(KEY_A):
 		movement.x = speed * -1
