@@ -1,0 +1,98 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Running (1).png" type="Texture" id=1]
+[ext_resource path="res://KinematicBody2D.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Walk"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1, 4 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "dead"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.213768, 0.324421 ), Vector2( -51.6999, 17.5407 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -90.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "sky"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 5 ]
+}
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.213768, 0.324421 )
+scale = Vector2( 0.02, 0.02 )
+texture = ExtResource( 1 )
+vframes = 3
+hframes = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 14.2199, 48.2016, -7.39558, 48.241, -8.61613, 46.9023, -8.6555, 42.4926, -8.06492, 41.9414, -8.16185, 13.6417, -11.2374, 13.7905, -11.8327, 12.9968, -11.8327, 9.9212, -11.2374, 9.8716, -11.2374, 6.05192, -13.0844, 5.97582, -14.4122, 4.71255, -14.3182, -14.2277, -13.3166, -16.3452, -10.7911, -17.8184, -5.38924, -20.0633, -4.18422, -19.6845, -4.02863, -25.1622, -7.84462, -26.5876, -10.5767, -29.1307, -10.5767, -32.9008, -12.1641, -32.9008, -11.7672, -41.8299, -7.82172, -45.627, -5.10685, -47.0837, -1.05225, -48.1796, 7.28161, -48.1796, 13.9635, -46.8189, 16.0123, -45.6, 16.0123, -40.8378, 15.023, -39.4688, 13.4328, -39.052, 13.6312, -26.7496, 11.3775, -22.8695, 8.47216, -21.1937, 8.47216, -19.0111, 13.6926, -18.2393, 14.8769, -16.9118, 14.91, -6.35031, 14.8218, 9.56217, 15.607, 9.84276, 15.607, 12.9961, 14.9237, 13.7845, 12.3485, 13.7319, 12.4102, 39.8131, 11.7788, 39.8833, 11.849, 41.1461, 12.4804, 41.2864, 12.6226, 42.6654, 14.0958, 43.5774, 15.497, 45.1448, 15.5672, 46.9688 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Walk = SubResource( 1 )
+anims/dead = SubResource( 4 )
+anims/idle = SubResource( 2 )
+anims/sky = SubResource( 3 )
